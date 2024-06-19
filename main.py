@@ -14,6 +14,10 @@ player1_x_pos = 10
 player1_y_pos = WINDOW_SIZE[1] / 2 - (player_height / 2)
 player1_rect = pygame.Rect(player1_x_pos,player1_y_pos,player_width,player_height)
 
+player2_x_pos = WINDOW_SIZE[0] - 30
+player2_y_pos = WINDOW_SIZE[1] / 2 - (player_height / 2)
+player2_rect = pygame.Rect(player2_x_pos, player2_y_pos, player_width, player_height)
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -23,11 +27,18 @@ while running:
     
     screen.fill((50,60,57))
     pygame.draw.rect(screen, (211,201,161), player1_rect)
+    pygame.draw.rect(screen, (211,201,161), player2_rect)
+
 #!!! sistemare input/movimento !!!
     if pygame.key.get_pressed()[pygame.K_s] and player1_rect.bottom < WINDOW_SIZE[1]:
         player1_rect.y += player_speed * dt
     if pygame.key.get_pressed()[pygame.K_w] and player1_rect.top > 0:
         player1_rect.y -= player_speed * dt
+
+    if pygame.key.get_pressed()[pygame.K_DOWN] and player2_rect.bottom < WINDOW_SIZE[1]:
+        player2_rect.y += player_speed * dt
+    if pygame.key.get_pressed()[pygame.K_UP] and player2_rect.top > 0:
+        player2_rect.y -= player_speed * dt
                                           
                                   
 
