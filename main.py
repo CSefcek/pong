@@ -25,8 +25,9 @@ player2_y_pos = WINDOW_SIZE[1] / 2 - (player_height / 2)
 player2_rect = pygame.Rect(player2_x_pos, player2_y_pos, player_width, player_height)
 
 ball_x_pos = WINDOW_SIZE[0] / 2 - (ball_width / 2)
-ball_y_pos = WINDOW_SIZE[1] / 2 
+ball_y_pos = 0 #WINDOW_SIZE[1] / 2 
 ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
+ball_angle = 0.5
 
 
 
@@ -54,6 +55,20 @@ while running:
         player2_rect.y += player_speed * dt
     if pygame.key.get_pressed()[pygame.K_UP] and player2_rect.top > 0:
         player2_rect.y -= player_speed * dt
+
+    ball_rect.x += ball_speed * dt
+    ball_rect.y += ball_speed * ball_angle * dt
+
+    if ball_rect.colliderect(player1_rect) or ball_rect.colliderect(player2_rect):
+        ball_speed = -ball_speed
+        ball_angle = -ball_angle
+
+    # NEXT STEP: program bouncing on the upper and lower border of the screen
+
+    if ball_rect.y > WINDOW_SIZE[1] - ball_height:
+        ball_angle = -ball_angle
+    elif ball_rect.y < 0:
+        ball_angle = -ball_angle
                                           
                                   
 
