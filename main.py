@@ -63,12 +63,17 @@ while running:
         ball_speed = -ball_speed
         ball_angle = -ball_angle
 
-    # NEXT STEP: program bouncing on the upper and lower border of the screen
+    # Bouncing on the upper and lower border of the screen
 
     if ball_rect.y > WINDOW_SIZE[1] - ball_height:
         ball_angle = -ball_angle
     elif ball_rect.y < 0:
         ball_angle = -ball_angle
+
+
+    # NEXT STEP: Fix collision bug that occurs sometimes.
+    # Check how colliderrect is implemented. 
+    # Probably checking collision only for front side of each paddle is better
                                           
                                   
 
