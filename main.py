@@ -38,11 +38,7 @@ while running:
             pygame.quit()
             sys.exit()
     
-    screen.fill((50,60,57))
-    pygame.draw.line(screen, (211,201,161), (WINDOW_SIZE[0]/2,0),(WINDOW_SIZE[0]/2,WINDOW_SIZE[1]), 3)
-    pygame.draw.rect(screen, (211,201,161), player1_rect)
-    pygame.draw.rect(screen, (211,201,161), player2_rect)
-    pygame.draw.rect(screen, (211,201,161), ball_rect)
+    
     
 
     # Input and movement
@@ -79,7 +75,11 @@ while running:
 
 
     #RENDER MY GAME BELOW THIS LINE
-    
+    screen.fill((50,60,57))
+    pygame.draw.line(screen, (211,201,161), (WINDOW_SIZE[0]/2,0),(WINDOW_SIZE[0]/2,WINDOW_SIZE[1]), 3)
+    pygame.draw.rect(screen, (211,201,161), player1_rect)
+    pygame.draw.rect(screen, (211,201,161), player2_rect)
+    pygame.draw.rect(screen, (211,201,161), ball_rect)
     #RENDER MY GAME ABOVE THIS LINE
     pygame.display.flip()
 
