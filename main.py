@@ -55,9 +55,15 @@ while running:
     ball_rect.x += ball_speed * dt
     ball_rect.y += ball_speed * ball_angle * dt
 
-    if ball_rect.colliderect(player1_rect) or ball_rect.colliderect(player2_rect):
+    if ball_rect.colliderect(player1_rect):
         ball_speed = -ball_speed
         ball_angle = -ball_angle
+        ball_rect.left = player1_rect.right # move ball outside paddle to stop collision
+
+    if ball_rect.colliderect(player2_rect):
+        ball_speed = -ball_speed
+        ball_angle = -ball_angle
+        ball_rect.right = player2_rect.left # move ball outside paddle to stop collision
 
     # Bouncing on the upper and lower border of the screen
 
@@ -66,13 +72,7 @@ while running:
     elif ball_rect.y < 0:
         ball_angle = -ball_angle
 
-
-    # NEXT STEP: Fix collision bug that occurs sometimes.
-    # Check how colliderrect is implemented. 
-    # Probably checking collision only for front side of each paddle is better
-                                          
-                                  
-
+                             
 
     #RENDER MY GAME BELOW THIS LINE
     screen.fill((50,60,57))
