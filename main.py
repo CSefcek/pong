@@ -8,6 +8,9 @@ clock = pygame.time.Clock()
 running = True
 dt = 0
 
+score_player1 = 0
+score_player2 = 0
+
 player_speed = 400
 player_width = 20
 player_height = 100
@@ -29,6 +32,11 @@ ball_y_pos = 0 #WINDOW_SIZE[1] / 2
 ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
 ball_angle = 0.5
 
+text_font = pygame.font.SysFont("Arial", 30)
+
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
 
 
 while running:
@@ -72,10 +80,13 @@ while running:
     elif ball_rect.y < 0:
         ball_angle = -ball_angle
 
-                             
 
     #RENDER MY GAME BELOW THIS LINE
     screen.fill((50,60,57))
+    
+    draw_text(str(score_player1), text_font, (211,201,161), WINDOW_SIZE[0]/4, 10)
+    draw_text(str(score_player2), text_font, (211,201,161), (WINDOW_SIZE[0]/2)+WINDOW_SIZE[0]/4, 10)
+
     pygame.draw.line(screen, (211,201,161), (WINDOW_SIZE[0]/2,0),(WINDOW_SIZE[0]/2,WINDOW_SIZE[1]), 3)
     pygame.draw.rect(screen, (211,201,161), player1_rect)
     pygame.draw.rect(screen, (211,201,161), player2_rect)
