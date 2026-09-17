@@ -80,6 +80,18 @@ while running:
     elif ball_rect.y < 0:
         ball_angle = -ball_angle
 
+    # Updating score
+
+    if ball_rect.left > WINDOW_SIZE[0]:
+        score_player1 += 1
+        ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
+
+    if ball_rect.right < 0:
+        score_player2 += 1
+        ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
+
+
+
 
     #RENDER MY GAME BELOW THIS LINE
     screen.fill((50,60,57))
