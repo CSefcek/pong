@@ -85,10 +85,12 @@ while running:
     if ball_rect.left > WINDOW_SIZE[0]:
         score_player1 += 1
         ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
+        ball_angle = -ball_angle
 
     if ball_rect.right < 0:
         score_player2 += 1
         ball_rect = pygame.Rect(ball_x_pos, ball_y_pos, ball_width, ball_height)
+        ball_angle = -ball_angle
 
 
 
